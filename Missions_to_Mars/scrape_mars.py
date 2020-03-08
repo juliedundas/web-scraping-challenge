@@ -89,7 +89,10 @@ def scrape():
     #Create html table
     html_table = df.to_html()
     html_table.replace('\n', '')
-    df.to_html('table.html')    
+    df.to_html('table.html')  
+
+    mars_data['table'] = html_table
+
 
 # Mars hemisphere scrape:
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
@@ -174,4 +177,5 @@ def scrape():
 
     browser.quit()
 
+    print(mars_data)
     return mars_data

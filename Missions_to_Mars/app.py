@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, jsonify, render_template, redirect
 from flask_pymongo import PyMongo
 import scrape_mars
 
@@ -14,7 +14,7 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/mars")
 def home():
 
     # Find one record of data from the mongo database
-    mars = mongo.db.collection.find_one()
+    mars = mongo.db.mars.find_one()
 
     # Return template and data
     return render_template("index.html", mars=mars)
@@ -29,7 +29,7 @@ def scrape():
     mars_data = scrape_mars.scrape()
 
     # Update the Mongo database using update and upsert=True
-    mars.update({}, mars_data, upsert=True)
+    mars.replace_one({}, mars_data, upsert=True)
 
     # Redirect back to home page
     return redirect("/")

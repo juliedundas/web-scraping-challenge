@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mars Scraper</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/style.css">
 </head>
 
 <body>
@@ -18,6 +19,11 @@
     </div>
     <h2>Latest Mars News: {{ mars.news_title }}</h2>
     <h3>{{ mars.news_desc }}</h3>
+    <img src="{{mars.feature_image }}" alt="Mars featured image" />
+  </div>
+  <div class="col-md-12">
+    <h3>Mars facts</h3>
+    {{ mars.table | safe }}
   </div>
   </div>
 </body>
