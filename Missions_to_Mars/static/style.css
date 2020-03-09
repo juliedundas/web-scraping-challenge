@@ -1,0 +1,13 @@
+h3 {
+  color: blue;
+}
+
+img {
+  width: 400px;
+  height: 400px;
+  border: 20px solid black;
+}
+
+.row {
+  background-color: lightgray;
+}

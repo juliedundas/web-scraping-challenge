@@ -155,17 +155,20 @@ def scrape():
         soup = BeautifulSoup(html, 'html.parser')
         
         titles = soup.find('h2',class_="title")
+        images = soup.find("img", class_="wide-image")["src"]
         browser.links.find_by_text('Sample')
         image = browser.windows[0].next.url
+        full_img_url = 'https://astrogeology.usgs.gov' + images
         
         urls = {
             'title':titles.text,
-            'img_url':image
+            'img_url':full_img_url
         }
-
-          
+        
         #title_list.append(titles)
         hemisphere_image_urls.append(urls)
+
+        
         
         print(titles.text)
         print(image)
@@ -173,7 +176,7 @@ def scrape():
 
         print(hemisphere_image_urls)
 
-    mars_data['images'] = urls
+    mars_data['images'] = hemisphere_image_urls
 
     browser.quit()
 
