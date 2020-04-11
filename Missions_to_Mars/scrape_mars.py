@@ -9,7 +9,7 @@ import pandas as pd
 
 #Site Navigation
 def init_browser():
-    executable_path = {"executable_path": "/Users/sharonsu/Downloads/chromedriver"}
+    executable_path = {"executable_path": '/usr/local/bin/chromedriver'}
     return Browser("chrome", **executable_path, headless=False)
 
 
